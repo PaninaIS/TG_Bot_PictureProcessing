@@ -1,10 +1,7 @@
 package lessons.utils;
 
 import lessons.functions.FilterOperation;
-import org.telegram.telegrambots.meta.api.methods.GetFile;
 import org.telegram.telegrambots.meta.api.objects.File;
-import org.telegram.telegrambots.meta.api.objects.PhotoSize;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.awt.image.BufferedImage;
 import java.io.FileOutputStream;
@@ -45,10 +42,10 @@ public class PhotoMessageUtils {
     }
 
     public static void processingImage(String fileName) throws Exception {
-        final BufferedImage image= ImageUtils.getImage(fileName);
-        final RgbMaster rgbMaster=new RgbMaster(image);
+        final BufferedImage image= ImageUtils.getImage(fileName);//получаем изображение
+        final RgbMaster rgbMaster=new RgbMaster(image);//обрабатываем
         rgbMaster.changeImage(FilterOperation::onlyRed);
-        ImageUtils.saveImage(rgbMaster.getImage(),fileName);
+        ImageUtils.saveImage(rgbMaster.getImage(),fileName);//сохраняем
     }
         //String response=message.getFrom().getId().toString(); текстовое сообщение
 
