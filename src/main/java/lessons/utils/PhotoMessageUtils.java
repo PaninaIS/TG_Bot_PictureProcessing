@@ -1,6 +1,7 @@
 package lessons.utils;
 
 import lessons.functions.FilterOperation;
+import lessons.functions.ImageOperation;
 import org.telegram.telegrambots.meta.api.objects.File;
 
 import java.awt.image.BufferedImage;
@@ -41,10 +42,10 @@ public class PhotoMessageUtils {
         outputStream.close();
     }
 
-    public static void processingImage(String fileName) throws Exception {
+    public static void processingImage(String fileName, ImageOperation operation) throws Exception {
         final BufferedImage image= ImageUtils.getImage(fileName);//получаем изображение
         final RgbMaster rgbMaster=new RgbMaster(image);//обрабатываем
-        rgbMaster.changeImage(FilterOperation::onlyRed);
+        rgbMaster.changeImage(operation);
         ImageUtils.saveImage(rgbMaster.getImage(),fileName);//сохраняем
     }
         //String response=message.getFrom().getId().toString(); текстовое сообщение
